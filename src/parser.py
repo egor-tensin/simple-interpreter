@@ -168,7 +168,7 @@ class Parser:
             else:
                 return left
         return left
-        
+
     def _parse_arithm_factor(self):
         identifier = self._try_parse_token(IdentifierToken)
         if identifier:

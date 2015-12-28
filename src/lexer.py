@@ -7,7 +7,7 @@ import re
 from tokens import *
 
 class LexerError(RuntimeError):
-    pass 
+    pass
 
 class Lexer:
     def __init__(self, src_file):
