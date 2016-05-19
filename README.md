@@ -219,4 +219,4 @@ the script gets separated into.
 
 This project, including all of the files and their contents, is licensed under
 terms of the MIT License.
-See [LICENSE.txt](LICENSE.txt) for details.
+See LICENSE.txt for details.
