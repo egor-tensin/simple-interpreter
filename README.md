@@ -215,8 +215,12 @@ to `src/parser.py`.
 You can also pass the path to a script to `src/lexer.py` to examine the tokens
 the script gets separated into.
 
-## Licensing
+## License
 
 This project, including all of the files and their contents, is licensed under
 terms of the MIT License.
-See LICENSE.txt for details.
+See [LICENSE.txt] for details.
+
+
+
+[LICENSE.txt]: LICENSE.txt
