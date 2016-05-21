@@ -1,32 +1,27 @@
 # Simple interpreter
 
-An interpreter of a simple artificial programming language written in Python 3.
+An interpreter of a simple (deficient, really) programming language.
 
 Here you'll find a brief description of the language and the implementation.
 
-## Simple language
-
-This software is an interpreter of a relatively simple programming language
-designed by me.
+## The language
 
 ### Data types
 
-Simple language supports integer numbers, floating-point numbers and the
-Boolean data type.
+Integer numbers, floating-point numbers and boolean values are supported.
 
-Literal integer numbers are comprised of a sequence of digits.
-Please note that negative integer number literals are not supported just yet.
+Literal integer numbers are represented as sequences of digits.
+Negative integer number literals are not supported.
 
-Floating-point number literals follow a bit more complicated format, with
-scientific notation support and stuff.
-At the moment negative floating-point numbers literals are not supported
-either.
+Floating-point number literals follow a bit more complicated format with
+scientific notation support.
+Negative floating-point numbers literals are not supported.
 
-The Boolean data type has two literal values: `True` and `False`.
+Boolean values are represented as either `True` or `False`.
 
 ### Variables
 
-Named memory locations are called variables.
+Variables are named memory regions.
 Numbers can be stored in memory by assigning them to variables using the
 assignment operator `:=`.
 A variable can be used anywhere a number can be used.
@@ -38,49 +33,49 @@ A variable can be used anywhere a number can be used.
 ### Arithmetic expressions
 
 Numbers can be computed from complex arithmetic expressions.
-Simple language supports addition, subtraction, multiplication, and division
-with grouping using parentheses.
+Addition, subtraction, multiplication, and division with grouping using
+parentheses are supported.
 An arithmetic expression can be used anywhere a number can be used.
 
     microseconds := 1000000 * seconds;
 
 ### Input/output
 
-Simple language provides basic output facilities using the `print` statement.
+Basic output facilities are provided by the `print` statement.
 
     print 60 * 3.14 / 180;
     print days_per_year * 24;
 
-Only `print`ing numbers is supported at the moment.
+Only numbers can be `print`ed.
 
-### Control flow
-
-Simple language supports conditional control flow using the `if` operator.
-When executed, the `if` operator executes its body statement if it's condition
-evaluates to the true Boolean value.
-
-    never_printed := 0;
-    if (False)
-        print never_printed;
+### Logical expressions
 
 Boolean values can be computed from complex logical expressions.
-Simple language supports conjunction (`&&`) and disjunction (`||`) of logical
-expressions, as well as comparing them using the equality (`==`) and inequality
-(`!=`) operators.
-Arguably not the most useful feature at the moment, but I am working on it.
+The language supports the conjunction (`&&`) and disjunction (`||`) operators,
+as well as comparing two Boolean values using the equality (`==`) and
+inequality (`!=`) operators.
 A logical expression can be used anywhere a Boolean value can be used.
 
     if (True && False == False)
         days := 366;
 
-Please note that the conditional operators `&&` and `||` have the same
-precedence right now.
+Please note that operators `&&` and `||` have the same precedence.
 
-### Compound statement
+### Control flow
+
+Control flow is supported using the conditional `if` statement.
+When executed, an `if` statement executes its body if its condition evaluates
+to `True`.
+
+    never_printed := 0;
+    if (False)
+        print never_printed;
+
+### Compound statements
 
 A compound statement (or a block) is a sequence of statements grouped together
 inside a pair of curly braces (`{` and `}`).
-When executed, a block executes its statements sequentially.
+When executed, a block executes the sequence of statements sequentially.
 A block can be used anywhere a statement can be used.
 
     if (True) {
@@ -92,10 +87,7 @@ A block can be used anywhere a statement can be used.
 
 ### Language grammar
 
-The language grammar written in the Extended Backus&#x2012;Naur Form (EBNF) (as
-described in [the corresponding Wikipedia article]
-(https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form))
-is as follows:
+The language grammar in the [Extended Backus-Naur Form] (EBNF) is as follows:
 
     program = { statement } ;
 
@@ -147,10 +139,9 @@ is as follows:
                    | "False"
                    | "(" , logical_expression , ")" ;
 
-## Interpreter design
+[Extended Backus-Naur Form]: https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form
 
-This implementation follows the conventional interpreter design principles
-(more or less).
+## Design
 
 ### Lexer
 
@@ -158,16 +149,17 @@ The *lexer* represents the contents of a source file as a sequence of *tokens*.
 Token examples include identifiers (like `x` and `foo`), literal values (either
 numeric like `42` and `3.14` or Boolean like `True`), parentheses (`(` and
 `)`), arithmetic operation signs (`+`, `*`), etc.
-The lexer is implemented in `src/lexer.py`.
+
+The lexer is implemented in "src/lexer.py".
 
 ### Parser
 
 The *parser* builds a program tree according to the rules described in the
 language grammar.
-Each tree node processes its children accordingly.
+Each tree node, when executed, processes its children accordingly.
 For example, a node representing addition of two numbers must have exactly
 two children.
-When executed, this node evaluates its children and adds the two values.
+When executed, such a node evaluates its children and adds the two values.
 
        +
       / \
@@ -176,8 +168,8 @@ When executed, this node evaluates its children and adds the two values.
 
 Each of the children in the example above might in turn be represented by a
 complex subtree.
-For example the right-side operand of the addition might be a result of
-multiplicating two numbers.
+For example, the right-side operand of an addition might be a multiplication of
+two numbers.
 
         +
        / \
@@ -188,9 +180,8 @@ multiplicating two numbers.
           /   \
          2     3
 
-The `if` statement also has two children (its condition and body), but executes
-its body only after making sure the condition evaluates to the true Boolean
-value.
+An `if` statement must also have two children (its condition and body), but
+executes its body only after making sure the condition evaluates to `True`.
 
                     if
                    /  \
@@ -203,16 +194,17 @@ value.
       /        \
     True     False
 
-The parser is implemented in `src/parser.py`.
+The parser is implemented in "src/parser.py".
+
+## Prerequisites
+
+* Python 3
 
 ## Usage
 
-To use this software, you need to be able to run Python 3 scripts.
+To execute a script, pass the path to a file to "src/parser.py".
 
-To execute a script written in Simple language, pass the path to the script
-to `src/parser.py`.
-
-You can also pass the path to a script to `src/lexer.py` to examine the tokens
+You can also pass the path to a script to "src/lexer.py" to examine the tokens
 the script gets separated into.
 
 ## License
