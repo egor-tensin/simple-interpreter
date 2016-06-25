@@ -89,7 +89,7 @@ A block can be used anywhere a statement can be used.
 
 ### Language grammar
 
-The language grammar in the [Extended Backus-Naur Form] (EBNF) is as follows:
+The language grammar in the [Extended Backus-Naur Form] is as follows:
 
     program = { statement } ;
 
