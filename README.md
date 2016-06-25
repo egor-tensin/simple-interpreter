@@ -1,10 +1,12 @@
-# Simple interpreter
+Simple interpreter
+==================
 
 An interpreter of a simple (deficient, really) programming language.
 
 Here you'll find a brief description of the language and the implementation.
 
-## The language
+The language
+------------
 
 ### Data types
 
@@ -141,7 +143,8 @@ The language grammar in the [Extended Backus-Naur Form] (EBNF) is as follows:
 
 [Extended Backus-Naur Form]: https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form
 
-## Design
+Design
+------
 
 ### Lexer
 
@@ -196,18 +199,22 @@ executes its body only after making sure the condition evaluates to `True`.
 
 The parser is implemented in "src/parser.py".
 
-## Prerequisites
+Prerequisites
+-------------
 
-* Python 3
+Requires Python 3.
+The author is using Python 3.5.1.
 
-## Usage
+Usage
+-----
 
 To execute a script, pass the path to a file to "src/parser.py".
 
 You can also pass the path to a script to "src/lexer.py" to examine the tokens
 the script gets separated into.
 
-## License
+License
+-------
 
 This project, including all of the files and their contents, is licensed under
 terms of the MIT License.
