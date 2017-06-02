@@ -203,7 +203,7 @@ Prerequisites
 -------------
 
 Requires Python 3.
-The author is using Python 3.5.1.
+CPython 3.5.1 has been verified to work properly.
 
 Usage
 -----
